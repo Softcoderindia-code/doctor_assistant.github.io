@@ -113,7 +113,7 @@ function renderData(individualDoc) {
                 fs.collection(user.uid).doc(id).delete();
             }
         alert('Succesfully deleted')
-        window.location.reload()
+//         window.location.reload()
         })
         
     })
