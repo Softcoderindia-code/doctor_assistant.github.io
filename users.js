@@ -5,6 +5,9 @@ const spanWeekday = document.getElementById("weekday");
 
 const todoContainer = document.getElementById('pt');
 
+// $('.enter_link').click(function() { 
+//     $(this).parent().fadeOut(500);
+// });
 function loadbody() {
     // console.log('body is loaded');
     const date = new Date();
@@ -113,7 +116,7 @@ function renderData(individualDoc) {
                 fs.collection(user.uid).doc(id).delete();
             }
         alert('Succesfully deleted')
-//         window.location.reload()
+        // window.location.reload()
         })
         
     })

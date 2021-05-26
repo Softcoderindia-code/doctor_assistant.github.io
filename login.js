@@ -6,7 +6,7 @@ loginForm.addEventListener('submit', e => {
     // console.log(loginEmail, loginPassword);
     auth.signInWithEmailAndPassword(loginEmail, loginPassword).then(() => {
         console.log('login success');
-        location = "users.html";
+        location = "splash.html";
     }).catch(err => {
         const loginError = document.getElementById("loginError");
         loginError.innerText = err.message;
