@@ -112,6 +112,7 @@ function renderData(individualDoc) {
             if (user) {
                 fs.collection(user.uid).doc(id).delete();
             }
+            renderData()
         })
         
     })
