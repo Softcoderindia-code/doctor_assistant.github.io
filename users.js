@@ -102,7 +102,7 @@ function renderData(individualDoc) {
                 fs.collection(user.uid).doc(id).delete();
             }
         })
-        location.reload()
+//         location.reload()
     })
 }
 
