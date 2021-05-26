@@ -112,10 +112,8 @@ function renderData(individualDoc) {
             if (user) {
                 fs.collection(user.uid).doc(id).delete();
             }
-            var r = confirm("Successful Message!");
-            if (r == true){
-              window.location.reload();
-            }
+        alert('Succesfully deleted')
+        window.location.reload()
         })
         
     })
