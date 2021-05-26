@@ -51,17 +51,22 @@ function renderData(individualDoc) {
     var td4 = document.createElement('td')
     var td5 = document.createElement('td')
     var td6 = document.createElement('td')
+    var td7 = document.createElement('button')
+    
+    // var link = document.createElement('a')
     // var td6 = document.createElement('button')
     // td1.innerHTML= ++std
-    let counter = 0;
-    let id = counter += 1;
-    td1.innerHTML = id;
+    var std = 0;
+    td1.innerHTML = ++std;
     td2.innerHTML= individualDoc.data().opd;
     td3.innerHTML= individualDoc.data().ptname;
     Name.innerHTML= individualDoc.data().ptname;
     td4.innerHTML= individualDoc.data().age;
     td5.innerHTML= individualDoc.data().dia;
     td6.innerHTML= individualDoc.data().treat;
+    td7.innerHTML= 'files';
+    // td7.className('btn')
+    // td7.href(individualDoc.data().link)
     // td6.innerHTML = "Delete";
     // td6.id = 
     trow.appendChild(td1)
@@ -70,6 +75,8 @@ function renderData(individualDoc) {
     trow.appendChild(td4)
     trow.appendChild(td5)
     trow.appendChild(td6)
+    trow.appendChild(td7)
+    // td7.appendChild(link)
     // trow.appendChild(td6)
     // trow.appendChild(td6)
     tbody.appendChild(trow)
@@ -94,6 +101,10 @@ function renderData(individualDoc) {
     //     `
     todoContainer.appendChild(parentDiv);
 
+    td7.addEventListener('click', e =>{
+        window.open(individualDoc.data().link, "_blank");
+    })
+
     // trash clicking event
     trash.addEventListener('click', e => {
         let id = e.target.parentElement.parentElement.getAttribute('data-id');
@@ -102,7 +113,7 @@ function renderData(individualDoc) {
                 fs.collection(user.uid).doc(id).delete();
             }
         })
-//         location.reload()
+        
     })
 }
 
@@ -133,6 +144,7 @@ form.addEventListener('submit', e => {
     const age = form['age'].value;
     const dia = form['dia'].value;
     const treat = form['treat'].value;
+    const link = form['link'].value;
     // const todos = form['opd'].value;
     // console.log(todos);
     let id = counter += 1;
@@ -145,7 +157,8 @@ form.addEventListener('submit', e => {
                 ptname,
                 age,
                 dia,
-                treat
+                treat,
+                link
             }).then(() => {
                 console.log('todo added');
             }).catch(err => {
