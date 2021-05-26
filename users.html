@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- bootstrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- fontAweosum -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- googleFonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
+</head>
+
+<body onload="loadbody();">
+    <!-- date and time section -->
+    
+    <div class="my-container">
+        <h3>Welcome, <span id="username"></span></h3>
+        <h5>Doctor Assistant by Chaitanya</h5>
+        <div class="date-time">
+            <span id="date">date</span>
+            <span id="month">month</span>
+            <span id="year">year</span>
+            <span id="weekday">weekday</span>
+        </div><br>
+        <button class="btn btn-danger btn-sm" onclick="logout()">LOGOUT</button>
+    </div><br>
+
+    <!-- todo-form -->
+    <div class="container">
+        <form autocomplete="on" class="form-group" id="form">
+            <input type="text" class="form-control" id="opd" required><br>
+            <input type="text" class="form-control" id="ptname" required><br>
+            <input type="text" class="form-control" id="age" required><br>
+            <input type="text" class="form-control" id="dia" required><br>
+            <input type="text" class="form-control" id="treat" required><br>
+            <button type="submit" class="btn btn-success btn-block">ADD</button>
+        </form>
+    </div><br>
+
+    <!-- todos container -->
+    <div class="container todo-container" id="pt">
+
+    </div>
+    <div id="items" class="my-4">
+        <h2>Your Items</h2>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">SNo</th>
+                <th scope="col">OPD No.</th>
+                <th scope="col">Patient name</th> 
+                <th scope="col">Age/Gender</th> 
+                <th scope="col">Diagnosis</th> 
+                <th scope="col">Treatment</th> 
+                <!-- <th scope="col">Action</th> -->
+              </tr>
+            </thead>
+            <tbody id="tableBody">                  
+            </tbody>
+          </table>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
+    <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyBMFY_CSRHMIFgy7lmILCXkuJUTAD4mmRw",
+    authDomain: "assistant-js.firebaseapp.com",
+    databaseURL: "https://assistant-js.firebaseio.com",
+    projectId: "assistant-js",
+    storageBucket: "assistant-js.appspot.com",
+    messagingSenderId: "203724991498",
+    appId: "1:203724991498:web:a2140ea2ff3efc8ec403f3",
+    measurementId: "G-QXFZHSNL04"
+  };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const fs = firebase.firestore();
+        const db = firebase.database();
+    </script>
+
+    <script src="users.js"></script>
+
+</body>
+
+</html>
