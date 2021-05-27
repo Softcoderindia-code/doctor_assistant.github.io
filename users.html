@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor assistant</title>
+    <title>Users</title>
     <!-- css -->
     <link rel="stylesheet" href="style.css">
     <!-- bootstrap links -->
@@ -42,13 +42,14 @@
             <input type="text" class="form-control" id="dia" placeholder="diagnoasis" required><br>
             <input type="text" class="form-control" id="treat" placeholder="Treatment" required>
             <select id="medilist" onchange="change()">
-                <option value="med1" title="title 1">medi1</option>
-                <option value="medi2" title="title 2">medi2</option>
-                <option value="medi3" title="title 3">medi3</option>
+                <option value="or select from here" title="title 1">or select from here</option>
+                <option value="med1" title="title 2">medi1</option>
+                <option value="medi2" title="title 3">medi2</option>
+                <option value="medi3" title="title 4">medi3</option>
             </select><br>
             <br>
             <input type="text" class="form-control" id="link" placeholder="link" ><br>
-            <button type="submit" class="btn btn-success btn-block">ADD</button>
+            <button type="submit" class="btn btn-success btn-block" id = 'Add'>ADD</button>
         </form>
     </div><br>
 
@@ -58,7 +59,7 @@
     </div>
     <div id="items" class="my-4">
         <h2>Your Items</h2>
-        <table class="table">
+        <table class="table" id = 'itemTable'>
             <thead>
               <tr>
                 <th scope="col">SNo</th>
@@ -73,7 +74,30 @@
             </thead>
             <tbody id="tableBody">                  
             </tbody>
-          </table>
+            
+          <!-- </table>
+           <div id="items" class="my-4">
+            <h2>Your Items</h2>
+            <table class="table" id = 'htable'>
+                <thead>
+                  <tr>
+                    <th scope="col">SNo</th>
+                    <th scope="col">OPD No.</th>
+                    <th scope="col">Patient name</th> 
+                    <th scope="col">Age/Gender</th> 
+                    <th scope="col">Diagnosis</th> 
+                    <th scope="col">Treatment</th> 
+                    <th scope="col">link</th> 
+                    - <th scope="col">Action</th> -->
+                  <!-- </tr>
+                </thead>
+                <tbody id="htableBody">                  
+                </tbody> --> 
+          <button style="  margin: auto;
+          width: 60%;
+          /* border: 3px solid #73AD21; */
+          width: 100%;
+          padding: 10px;" type="button" onclick="exportTableToExcel('itemTable')" class="btn btn-outline-success">Export As excel</button>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
