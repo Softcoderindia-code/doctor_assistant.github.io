@@ -106,9 +106,16 @@ function renderData(individualDoc) {
 
     edit.appendChild(editi)
 
+    let add = document.createElement("button");
+    let addi = document.createElement("i")
+
+    addi.className="fas fa-plus"
+    add.appendChild(addi)
+
     parentDiv.appendChild(Name);
     parentDiv.appendChild(trash);
     parentDiv.appendChild(edit);
+    parentDiv.appendChild(add);
 
     // todoContainer.innerHTML += `
     //     <div class="container todo-box" id ="${individualDoc.doc.id}">
@@ -171,9 +178,38 @@ function renderData(individualDoc) {
                 
             }
             
+            
             // alert('please wait 3 seconds')
             // setTimeout(reload, 3000)
 
+        })        
+    })
+    add.addEventListener('click',e=>{
+        let id = e.target.parentElement.parentElement.getAttribute('data-id');
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                const opd= individualDoc.data().opd;
+                const ptname= individualDoc.data().ptname;
+                const age= individualDoc.data().age;
+                const dia= individualDoc.data().dia;
+                const treat= individualDoc.data().treat;
+                const link= individualDoc.data().link;
+                
+                const copd = document.getElementById('opd')
+                const cptname = document.getElementById('ptname')
+                const cage = document.getElementById('age')
+                const cdia = document.getElementById('dia')
+                const ctreat = document.getElementById('treat')
+                const clink = document.getElementById('link')
+                
+                copd.value = opd
+                cptname.value = ptname
+                cage.value = age
+                cdia.value = dia
+                ctreat.value = treat
+                clink.value = link               
+            }
+            
         })        
     })
 }
