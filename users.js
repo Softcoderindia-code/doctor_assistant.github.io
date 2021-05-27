@@ -55,6 +55,7 @@ function renderData(individualDoc) {
     var td5 = document.createElement('td')
     var td6 = document.createElement('td')
     var td7 = document.createElement('button')
+    var dropdown = document.getElementById('medilist')
     
     // var link = document.createElement('a')
     // var td6 = document.createElement('button')
@@ -83,6 +84,11 @@ function renderData(individualDoc) {
     // trow.appendChild(td6)
     // trow.appendChild(td6)
     tbody.appendChild(trow)
+    // var ddl = document.getElementById("ddlFruits");
+    var option = document.createElement("OPTION");
+    option.innerHTML = individualDoc.data().treat;
+    option.value = individualDoc.data().treat;
+    dropdown.options.add(option);
 
     // button
     let trash = document.createElement("button");
@@ -93,8 +99,16 @@ function renderData(individualDoc) {
     // appending
     trash.appendChild(i);
 
+    let edit = document.createElement("button")
+    let editi = document.createElement("i");
+
+    editi.className = "far fa-edit";
+
+    edit.appendChild(editi)
+
     parentDiv.appendChild(Name);
     parentDiv.appendChild(trash);
+    parentDiv.appendChild(edit);
 
     // todoContainer.innerHTML += `
     //     <div class="container todo-box" id ="${individualDoc.doc.id}">
@@ -107,7 +121,9 @@ function renderData(individualDoc) {
     td7.addEventListener('click', e =>{
         window.open(individualDoc.data().link, "_blank");
     })
-
+    function reload(){
+        window.location.reload()
+    }
     // trash clicking event
     trash.addEventListener('click', e => {
         let id = e.target.parentElement.parentElement.getAttribute('data-id');
@@ -115,10 +131,42 @@ function renderData(individualDoc) {
             if (user) {
                 fs.collection(user.uid).doc(id).delete();
             }
-        alert('Succesfully deleted')
-        // window.location.reload()
+        alert('Succesfully deleted please wait 3 seconds')
+        setTimeout(reload, 3000)
         })
         
+    })
+    edit.addEventListener('click',e=>{
+        let id = e.target.parentElement.parentElement.getAttribute('data-id');
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                const opd= individualDoc.data().opd;
+                const ptname= individualDoc.data().ptname;
+                const age= individualDoc.data().age;
+                const dia= individualDoc.data().dia;
+                const treat= individualDoc.data().treat;
+                const link= individualDoc.data().link;
+                
+                const copd = document.getElementById('opd')
+                const cptname = document.getElementById('ptname')
+                const cage = document.getElementById('age')
+                const cdia = document.getElementById('dia')
+                const ctreat = document.getElementById('treat')
+                const clink = document.getElementById('link')
+                
+                copd.value = opd
+                cptname.value = ptname
+                cage.value = age
+                cdia.value = dia
+                ctreat.value = treat
+                clink.value = link
+
+                fs.collection(user.uid).doc(id).delete();
+            }
+            // alert('please wait 3 seconds')
+            // setTimeout(reload, 3000)
+
+        })        
     })
 }
 
@@ -152,6 +200,12 @@ form.addEventListener('submit', e => {
     const link = form['link'].value;
     // const todos = form['opd'].value;
     // console.log(todos);
+    // const form = document.getElementById('form');
+    // var value = document.getElementById('medi')
+    // var option = document.createElement("option");
+    // option.text = "Kiwi";
+    // value.add(option);
+    
     let id = counter += 1;
     form.reset();
     auth.onAuthStateChanged(user => {
@@ -174,6 +228,7 @@ form.addEventListener('submit', e => {
             // console.log('user is not signed in to add todos');
         }
     })
+    // adddropdown()
 })
 
 // logout
@@ -198,3 +253,12 @@ auth.onAuthStateChanged(user => {
         })
     }
 })
+
+
+function change(){
+    // const form = document.getElementById('form')
+    // const treat = form['treat'].value;
+    var medi = document.getElementById("medilist");
+    var selectedText = medi.options[medi.selectedIndex].text;
+    document.getElementById("treat").value = selectedText;
+}

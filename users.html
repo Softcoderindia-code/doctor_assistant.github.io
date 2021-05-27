@@ -40,8 +40,14 @@
             <input type="text" class="form-control" id="ptname" placeholder="patient name" required><br>
             <input type="text" class="form-control" id="age" required placeholder="age/gender"><br>
             <input type="text" class="form-control" id="dia" placeholder="diagnoasis" required><br>
-            <input type="text" class="form-control" id="treat" placeholder="Treatment" required><br>
-            <input type="text" class="form-control" id="link" placeholder="link" required><br>
+            <input type="text" class="form-control" id="treat" placeholder="Treatment" required>
+            <select id="medilist" onchange="change()">
+                <option value="med1" title="title 1">medi1</option>
+                <option value="medi2" title="title 2">medi2</option>
+                <option value="medi3" title="title 3">medi3</option>
+            </select><br>
+            <br>
+            <input type="text" class="form-control" id="link" placeholder="link" ><br>
             <button type="submit" class="btn btn-success btn-block">ADD</button>
         </form>
     </div><br>
