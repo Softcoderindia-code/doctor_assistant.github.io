@@ -56,6 +56,8 @@ function renderData(individualDoc) {
     var td6 = document.createElement('td')
     var td7 = document.createElement('button')
     var dropdown = document.getElementById('medilist')
+    // var add_coloumn = document.createElement('button')
+
     
     // var link = document.createElement('a')
     // var td6 = document.createElement('button')
