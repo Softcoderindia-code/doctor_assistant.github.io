@@ -30,7 +30,7 @@ auth.onAuthStateChanged(user => {
     }
     else {
         alert('your login session has expired or you have logged out, login again to continue');
-        location = "login.html";
+        location = "index.html";
     }
 })
 
