@@ -160,9 +160,17 @@ function renderData(individualDoc) {
                 cdia.value = dia
                 ctreat.value = treat
                 clink.value = link
-
-                fs.collection(user.uid).doc(id).delete();
+                
+                var add = document.getElementById("Add")
+                add.addEventListener('click',e=>{
+                    alert("Succecfully edited please wait 3 seconds")
+                    setTimeout(reload, 3000)
+                    fs.collection(user.uid).doc(id).delete();
+                })
+                
+                
             }
+            
             // alert('please wait 3 seconds')
             // setTimeout(reload, 3000)
 
@@ -262,3 +270,78 @@ function change(){
     var selectedText = medi.options[medi.selectedIndex].text;
     document.getElementById("treat").value = selectedText;
 }
+
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+// function hadd(individualDoc){
+//     let hparentDiv = document.createElement("div");
+//     hparentDiv.className = "container todo-box";
+//     hparentDiv.setAttribute('data-id', individualDoc.id);
+    
+//     // var htbody = document.getElementById('htableBody')
+//     // var htrow = document.createElement('tr')
+//     // let htd1 = document.createElement("td");
+//     var htd2 = document.createElement('td')
+//     var htd3 = document.createElement('td')
+//     var htd4 = document.createElement('td')
+//     var htd5 = document.createElement('td')
+//     var htd6 = document.createElement('td')
+//     // var td7 = document.createElement('button')
+//     // var dropdown = document.getElementById('medilist')
+//     // todo div
+    
+//     var htbody = document.getElementById('htableBody')
+//     var htrow = document.createElement('tr')
+
+//     var htd2 = document.createElement('td')
+//     var htd3 = document.createElement('td')
+//     var htd4 = document.createElement('td')
+//     var htd5 = document.createElement('td')
+//     var htd6 = document.createElement('td')
+
+//     htd2.innerHTML= individualDoc.data().opd;
+//     htd3.innerHTML= individualDoc.data().ptname;
+//     htd4.innerHTML= individualDoc.data().age;
+//     htd5.innerHTML= individualDoc.data().dia;
+//     htd6.innerHTML= individualDoc.data().treat;
+
+//     htrow.appendChild(htd2)
+//     htrow.appendChild(htd3)
+//     htrow.appendChild(htd4)
+//     htrow.appendChild(htd5)
+//     htrow.appendChild(htd6)
+//     // htrow.appendChild(htd7)
+//     // td7.appendChild(link)
+//     // trow.appendChild(td6)
+//     // trow.appendChild(td6)
+//     htbody.appendChild(htrow)
+// }
