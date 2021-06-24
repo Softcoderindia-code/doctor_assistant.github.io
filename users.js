@@ -92,6 +92,8 @@ function renderData(individualDoc) {
     option.value = individualDoc.data().treat;
     dropdown.options.add(option);
 
+
+
     // button
     let trash = document.createElement("button");
 
@@ -236,6 +238,16 @@ let date = new Date();
 let time = date.getTime();
 let counter = time;
 let id = counter += 1;
+var coloumn = document.getElementById('column')
+// coloumn.addEventListener('click', e=>{
+//     // const new_column = document.createElement('input')
+//     const new_column = prompt("Please tell it's id");
+//     if (new_column != null) {
+//         const column = document.createElement('input')
+//         column.id = new_column
+//         form.appendChild(column)
+//       }
+// })
 form.addEventListener('submit', e => {
     e.preventDefault();
     const opd = form['opd'].value;
@@ -244,6 +256,8 @@ form.addEventListener('submit', e => {
     const dia = form['dia'].value;
     const treat = form['treat'].value;
     const link = form['link'].value;
+    // const new_column = form['column'].value
+
     // const todos = form['opd'].value;
     // console.log(todos);
     // const form = document.getElementById('form');
@@ -264,6 +278,7 @@ form.addEventListener('submit', e => {
                 dia,
                 treat,
                 link
+                // new_column
             }).then(() => {
                 console.log('todo added');
             }).catch(err => {
