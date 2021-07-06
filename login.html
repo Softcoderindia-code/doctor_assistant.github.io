@@ -29,7 +29,9 @@
             <button type="submit" class="btn btn-success btn-block">LOGIN</button>
             <br>
             <div class="container error" id="loginError"></div>
-            <button class="btn btn-success btn-block" onclick="firebase.auth().sendPasswordResetEmail(document.getElementById('login-email').value)
+
+        </form>
+                    <button class="btn btn-success btn-block" onclick="firebase.auth().sendPasswordResetEmail(document.getElementById('login-email').value)
             .then(() => {
                 console.log('Sent email')
             })
@@ -39,7 +41,6 @@
               console.log(errorMessage)
               // ..
             });">Forgot Password</button>
-        </form>
         
     </div>
 
