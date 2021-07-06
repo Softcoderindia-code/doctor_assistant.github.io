@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,16 +30,20 @@
             <button type="submit" class="btn btn-success btn-block">LOGIN</button>
             <br>
             <div class="container error" id="loginError"></div>
-
-        </form>
-                    <button class="btn btn-success btn-block" onclick="firebase.auth().sendPasswordResetEmail(document.getElementById('login-email').value)
-            .then(() => {                
-                const loginError = document.getElementById("loginError");
-                loginError.innerText = Email Sent;
+            <button class="btn btn-success btn-block" onclick="firebase.auth().sendPasswordResetEmail(document.getElementById('login-email').value)
+            .then(() => {
+                const text = document.getElementById('loginError')
+                text.innerHTML = 'Email Sent'
             })
             .catch((error) => {
-                const loginError = document.getElementById("loginError");
-                loginError.innerText = err.message;});">Forgot Password</button>
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              console.log(errorMessage)
+              const text = document.getElementById('loginError')
+              text.innerHTML = errorMessage
+              // ..
+            });">Forgot Password</button>
+        </form>
         
     </div>
 
