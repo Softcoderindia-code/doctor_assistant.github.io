@@ -32,13 +32,13 @@
 
         </form>
                     <button class="btn btn-success btn-block" onclick="firebase.auth().sendPasswordResetEmail(document.getElementById('login-email').value)
-            .then(() => {
-                console.log('Sent email')
+            .then(() => {                
+                const loginError = document.getElementById("loginError");
+                loginError.innerText = Email Sent;
             })
             .catch((error) => {
-              var errorCode = error.code;
-              var errorMessage = error.message;
-              console.log(errorMessage)
+                const loginError = document.getElementById("loginError");
+                loginError.innerText = err.message;
               // ..
             });">Forgot Password</button>
         
